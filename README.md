@@ -37,3 +37,10 @@
 #### 创建WebSocket客户端
 
 * websocket.html  
+
+### TaskWorker
+
+#### 执行异步任务
+
+* taskS.php
+
