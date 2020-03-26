@@ -62,3 +62,6 @@
 
 * coroutine_exec.php
 
+#### go + chan + defer
+
+* coroutine.php
