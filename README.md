@@ -69,3 +69,7 @@
 #### go语言风格的defer
 
 * go_defer.php
+
+#### 实现 go语言中的 sync.WaitGroup 功能
+
+* go_waitGroup.php
