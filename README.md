@@ -65,3 +65,7 @@
 #### go + chan + defer
 
 * coroutine.php
+
+#### go语言风格的defer
+
+* go_defer.php
