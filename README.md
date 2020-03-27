@@ -3,6 +3,7 @@
 ### PHP多进程
 
 * process_first.php --- 第一个PHP多进程程序
+* process_exec.php --- 用子进程执行外部命令
 
 ### TCP
 
