@@ -7,6 +7,8 @@
 * process_monitor.php   --- 监控子进程
 * process_daemon.php    --- 守护进程化
 * process_signal.php    --- 任务控制信号
+* shmop.php、shmop2.php  --- 进程控制 - 共享内存
+
 
 ### TCP
 
