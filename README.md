@@ -8,7 +8,8 @@
 * process_daemon.php    --- 守护进程化
 * process_signal.php    --- 任务控制信号
 * shmop.php、shmop2.php  --- 进程控制 - 共享内存
-
+* echo_server.php、echo_client.php --- 进程控制 - 网络套接字(一)
+* stream_echo_server.php、stream_echo_client.php ---进程控制 - 网络套接字(二)
 
 ### TCP
 
