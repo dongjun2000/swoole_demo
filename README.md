@@ -12,6 +12,11 @@
 * stream_echo_server.php、stream_echo_client.php ---进程控制 - 网络套接字(二)
 * crawler.php           --- 实战-图片采集
 
+### PHP协程
+
+* yield.php             --- 生成器使用
+* schedule.php          --- 多任务调度
+
 ### TCP
 
 #### 创建TCP服务器
