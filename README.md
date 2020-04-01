@@ -19,6 +19,11 @@
 * yield.php             --- 生成器使用
 * schedule.php          --- 多任务调度
 
+### 长连接项目示例
+
+* workerman_tj.html、workerman_ws.php    --- Workerman实时统计
+* swoole_chat.html、swoole_ws.php        --- Swoole聊天程序
+
 ### TCP
 
 #### 创建TCP服务器

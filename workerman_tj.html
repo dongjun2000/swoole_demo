@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>系统状态实时统计</title>
+</head>
+<body>
+    [系统平均负载]
+    <p id="load"></p>
+
+    <hr>
+
+    [系统内存]
+    <p id="memory"></p>
+
+    <hr>
+
+    [系统容量]
+    <p id="disk"></p>
+
+    <script src="https://cdn.bootcss.com/jquery/1.10.1/jquery.min.js"></script>
+    <script>
+        try {
+            var ws = new WebSocket('ws://www.mi360.cn:9502');
+
+            ws.onmessage = function ({data}) {
+                var obj = $.parseJSON(data);
+
+                var load = '';
+                var memory = '';
+                var disk = '';
+
+                $.each(obj.load, function (k, v) {
+                    load += '<p>' + v + '</p>';
+                });
+                $('#load').html(load);
+
+                $.each(obj.memory, function (k, v) {
+                    memory += '<p>' + v + '</p>';
+                });
+                $('#memory').html(memory);
+
+                $.each(obj.disk, function (k, v) {
+                    disk += '<p>' + v + '</p>';
+                });
+                $('#disk').html(disk);
+            };
+
+            ws.onclose = function () {
+                console.log('server closed');
+            };
+
+            ws.onerror = function () {
+                console.log('server error');
+            };
+        } catch (e) {
+            alert(e.message);
+        }
+    </script>
+</body>
+</html>
