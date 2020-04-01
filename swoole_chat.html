@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Swoole聊天程序</title>
+</head>
+<body>
+
+<div style="width:300px;height:400px;border:1px solid black;overflow:scroll;">
+</div>
+<p>
+    <input type="text" name="content" style="border:1px solid black;">
+    <button type="submit">发送</button>
+</p>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(function () {
+        var ws = new WebSocket('ws://www.mi360.cn:9502');
+
+        // 收到数据时触发
+        ws.onmessage = function ({data}) {
+            $('div').append('<p>' + data + '</p>');
+            // scrollTop() 方法返回或设置匹配元素的滚动条的垂直位置。
+            // scrollHeight 这个只读属性是一个元素内容高度的度量,包括由于溢出导致的视图中不可见内容。
+            $('div').scrollTop($('div')[0].scrollHeight);
+        };
+
+        $('button').on('click', function () {
+            var content = $('input').val();
+            $('input').val('');
+            ws.send(content);
+        });
+    });
+</script>
+
+</body>
+</html>
