@@ -10,6 +10,7 @@
 * shmop.php、shmop2.php  --- 进程控制 - 共享内存
 * echo_server.php、echo_client.php --- 进程控制 - 网络套接字(一)
 * stream_echo_server.php、stream_echo_client.php ---进程控制 - 网络套接字(二)
+* crawler.php           --- 实战-图片采集
 
 ### TCP
 
