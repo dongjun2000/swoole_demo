@@ -16,7 +16,7 @@
 
 ### PHP协程
 
-* yield.php             --- 生成器使用
+* yield.php、xrange.php  --- 生成器使用
 * schedule.php          --- 多任务调度
 
 ### 长连接项目示例
