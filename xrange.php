@@ -44,3 +44,10 @@ foreach (xrange(1, -10, -2) as $number) {
     echo "{$number} ";
 }
 
+echo PHP_EOL;
+
+$range = xrange(0, 100, 10);
+do {
+    var_dump($range->current());
+    $range->next();
+} while ($range->valid());
