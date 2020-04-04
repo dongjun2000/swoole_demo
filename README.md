@@ -1,5 +1,3 @@
-# swoole_demo
-
 ### PHP多进程
 
 * process_first.php     --- 第一个PHP多进程程序
@@ -31,6 +29,20 @@ Swoole 是面向生成环境的PHP异步网络通信引擎，使 PHP开发人员
 Swoole 可以广泛应用于互联网、移动通信、企业软件、云计算、网络游戏、物联网、车联网和智能家居等领域。
 
 使用 PHP+SWOOLE 作为网络通信框架，可以使企业IT研发团队的效率大大提升，更加专注于开发创新产品。
+
+Swoole 与 php-fpm 在HTTP方面的差异：
+
+```
+Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
+[Nginx] -> SwooleHttpServer -> 同步阻塞/非阻塞/协程执行（返回结果）
+```
+* PHP-FPM 是后台多进程模型，但是只用来解析PHP脚本，没有Web服务器支持无法处理HTTP请求。
+* SwooleHttpServer 实现了HTTP协议解析，C语言实现，应用常驻内存，性能很高，并且支持了很多其它高级特性。
+
+### 编程须知
+
+* sleep.php     --- 睡眠函数的影响
+
 
 ### TCP
 
