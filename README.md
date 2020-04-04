@@ -47,15 +47,9 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 * rand.php      --- 随机函数的影响
 * isolation.php --- 进程隔离
 
-
 ### TCP
 
-#### 创建TCP服务器
-
-* tcpS.php
-
-#### 创建TCP客户端
-
+* tcpS.php       --- 创建TCP服务器
 * tcp_socket.php --- PHP的原生socket实现
 * tcp_sync.php   --- 同步tcp客户端
 * tcp_async.php  --- 异步tcp客户端
