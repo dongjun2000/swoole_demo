@@ -45,6 +45,7 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 * exit.php      --- 中止函数的影响
 * while.php     --- 死循环的影响
 * rand.php      --- 随机函数的影响
+* isolation.php --- 进程隔离
 
 
 ### TCP
