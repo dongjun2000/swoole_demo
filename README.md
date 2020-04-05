@@ -59,6 +59,14 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 * udpS.php       --- 创建UDP服务器
 * udpC.php       --- 创建UDP客户端
 
+### Server四层生命周期
+
+* lifecycle.php  --- Server四层生命周期
+
+### 事件回调函数详解
+
+* callback.php   --- 事件回调函数详解
+
 ### http
 
 #### 创建HTTP服务器
