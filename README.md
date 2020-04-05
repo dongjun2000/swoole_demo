@@ -56,13 +56,8 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 
 ### UDP
 
-#### 创建UDP服务器
-
-* udpS.php
-
-#### 创建UDP客户端
-
-* udpC.php
+* udpS.php       --- 创建UDP服务器
+* udpC.php       --- 创建UDP客户端
 
 ### http
 
