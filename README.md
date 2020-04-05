@@ -78,7 +78,7 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 
 ### Redis 服务器
 
-* redis.php
+* redis.php      --- 创建Redis服务器
 
 ### TaskWorker
 
