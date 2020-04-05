@@ -69,9 +69,7 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 
 ### http
 
-#### 创建HTTP服务器
-
-* http.php
+* http.php       --- 创建HTTP服务器
 
 ### WebSocket
 
