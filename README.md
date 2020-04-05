@@ -73,13 +73,8 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 
 ### WebSocket
 
-#### 创建WebSocket服务器
-
-* websocket.php
-
-#### 创建WebSocket客户端
-
-* websocket.html  
+* websocket.php  --- 创建WebSocket服务器
+* websocket.html --- 创建WebSocket客户端
 
 ### TaskWorker
 
