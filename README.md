@@ -76,6 +76,10 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 * websocket.php  --- 创建WebSocket服务器
 * websocket.html --- 创建WebSocket客户端
 
+### Redis 服务器
+
+* redis.php
+
 ### TaskWorker
 
 #### 执行异步任务
