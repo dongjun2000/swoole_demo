@@ -6,7 +6,21 @@
  * 在Server程序中如果需要执行很耗时的操作，比如：一个聊天服务器发送广播，Web服务器中发送邮件。
  * 如果直接去执行这些耗时任务的函数就会阻塞当前进程，导致服务器响应变慢。
  *
- * Swoole 提供了异步任务处理的功能，可以投递一个异步任务到 TaskWorker 进程池中执行，不影响当前请求的处理速度。
+ * Server 程序中如果需要执行耗时的操作，worker 进程使用 $server->task() 向 task worker 投递任务，
+ * 使当前进程不阻塞，不影响当前请求的处理速度。
+ * （必须设置了 task_worker_num 才能使用 task 回调函数）
+ *
+ * 注意事项：
+ *      1.设置的 onTask 回调函数在 task 进程池内异步执行，执行完后使用 return 非null的变量或者调用 $server->finish() 来返回结果。
+ *      2.return 和 $server->finish() 操作都是可选的，onTask 可以不返回任何结果。
+ *      3.onTask 返回结果才会触发 onFinish 回调，执行 onFinish 逻辑的 worker 进程和下发 task 任务的 worker 是同一进程。
+ *
+ * 回调原型：
+ *      onTask(Swoole\Server $server, int $taskId, int $srcWorkerId, mix $data)
+ *      onTask(Swoole\Server $server, Swoole\Server\Task $task)
+ *          swoole-4.2.12起，开启了 task_enable_coroutine 之后的函数原型，信息存储在 $task 对象的属性上。
+ *      onFinish(Swoole\Server $server, int $taskId, string $data)
+ *
  */
 
 use Swoole\Server;

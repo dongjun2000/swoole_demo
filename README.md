@@ -82,9 +82,7 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 
 ### TaskWorker
 
-#### 执行异步任务
-
-* taskS.php
+* taskS.php      --- 执行异步任务
 
 ### 定时器
 
