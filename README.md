@@ -96,11 +96,66 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 
 * multiprocess_share_data.php
 
-### coroutine
+### coroutine（Swoole协程）
 
-#### 协程客户端
+* co.php                    --- CSP编程方式
+* coroutine_client.php      --- 协程客户端
+* co_runtime.php            --- 网络客户端一键协程
 
-* coroutine_client.php
+#### 协程编程须知
+
+自动创建协程的回调方法：
+
+```
+onWorkerStart
+onConnect
+onOpen
+onReceive
+redis_onReceive
+onPacket
+onRequest
+onMessage
+onPipeMessage
+onFinish
+onClose
+tick/after 定时器
+
+当 enable_coroutine 开启后，以上这些回调和功能会自动创建协程，其余情况可以使用 go() 或者 Coroutine::create() 创建。
+@doc https://wiki.swoole.com/wiki/page/949.html
+```
+
+与 Go 协程的区别
+
+```
+Swoole4 的协程调度是单线程的，没有数据同步问题，协程间依次执行。
+Golang 协程调度器是多线程的，同一时间可能会有多个协程同时执行。
+
+Swoole 禁止协程间公用 Socket 资源，底层会报错，Golang 协程允许同时操作。
+
+Swoole4 的 defer 设计为在协程退出时一起执行，在多层函数中嵌套的 defer 任务按照 先进后出 的顺序执行。
+Golang 的 defer 与函数绑定，函数退出时执行。
+```
+
+协程异常处理
+
+```
+在协程编程中可直接使用 try/catch 处理异常，但必须在协程内捕获，不能跨协程捕获异常。
+
+Swoole-4.2.2 版本以上允许脚本(未创建HttpServer)在当前协程中 exit 退出。
+```
+
+协程编程范式
+
+```
+协程内部禁止使用全局变量。
+
+协程使用 use 关键字引入外部变量时禁止使用引用(&)。
+
+协程之间通讯必须使用 channel (IPC、Redis 等)。
+
+多个协程公用一个连接、使用全局变量/类的静态变量保存上下文会出现错误。
+```
+
 
 #### 并发sheel_exec
 
