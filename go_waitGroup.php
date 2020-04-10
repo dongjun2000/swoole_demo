@@ -3,44 +3,49 @@
 /**
  * 协程：实现 sync.WaitGroup 功能
  *
- * 在 Swoole4 中可以使用channel实现协程间的通信、依赖管理、协程同步。
+ * 在 Swoole4 中可以使用 channel 实现协程间的通信、依赖管理、协程同步。
  * 基于 channel 可以很容易地实现 Golang 的 sync.WaitGroup 功能。
+ * 
+ * 简单来说，WaitGroup 就是主协程等待所有子协程结束后才退出的功能。
+ * 
+ * Swoole 4.4.0 版本后内置 WaitGroup 类：
+ *      https://github.com/swoole/library/blob/master/src/core/Coroutine/WaitGroup.php
  */
 
-class WaitGroup
-{
-    private $count = 0;
-    private $chan;
+// class WaitGroup
+// {
+//     private $count = 0;
+//     private $chan;
 
-    public function __construct()
-    {
-        $this->chan = new chan();
-    }
+//     public function __construct()
+//     {
+//         $this->chan = new chan();
+//     }
 
-    // 增加计数
-    public function add()
-    {
-        $this->count++;
-    }
+//     // 增加计数
+//     public function add()
+//     {
+//         $this->count++;
+//     }
 
-    // 任务已完成
-    public function done()
-    {
-        $this->chan->push(true);
-    }
+//     // 任务已完成
+//     public function done()
+//     {
+//         $this->chan->push(true);
+//     }
 
-    // 等待所有任务完成恢复当前协程的执行
-    public function wait()
-    {
-        while ($this->count--) {
-            $this->chan->pop();
-        }
-    }
-}
+//     // 等待所有任务完成恢复当前协程的执行
+//     public function wait()
+//     {
+//         while ($this->count--) {
+//             $this->chan->pop();
+//         }
+//     }
+// }
 
 // 使用上面定义的WaitGroup
 go(function () {
-    $wg = new WaitGroup();
+    $wg = new co\WaitGroup();       // Swoole 4.4.0 版本后内置 WaitGroup 类
     $result = [];
 
     $wg->add();

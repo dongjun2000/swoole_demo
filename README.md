@@ -101,6 +101,13 @@ Nginx -> PHP-FPM -> 加载框架，同步阻塞执行（返回结果）
 * co.php                    --- CSP编程方式
 * coroutine_client.php      --- 协程客户端
 * co_runtime.php            --- 网络客户端一键协程
+* co_order.php              --- 协程执行流程
+* coroutine_exec.php        --- 并发sheel_exec
+* co_setDefer.php           --- setDefer机制
+* coroutine.php             --- go + chan + defer
+* co_chan.php               --- 子协程与通道实现并发请求
+* go_defer.php              --- go语言风格的defer
+* go_waitGroup.php          --- 实现go语言中的 sync.WaitGroup 功能
 
 #### 协程编程须知
 
@@ -124,7 +131,7 @@ tick/after 定时器
 @doc https://wiki.swoole.com/wiki/page/949.html
 ```
 
-与 Go 协程的区别
+与 Golang 协程的区别
 
 ```
 Swoole4 的协程调度是单线程的，没有数据同步问题，协程间依次执行。
@@ -157,18 +164,5 @@ Swoole-4.2.2 版本以上允许脚本(未创建HttpServer)在当前协程中 exi
 ```
 
 
-#### 并发sheel_exec
 
-* coroutine_exec.php
 
-#### go + chan + defer
-
-* coroutine.php
-
-#### go语言风格的defer
-
-* go_defer.php
-
-#### 实现 go语言中的 sync.WaitGroup 功能
-
-* go_waitGroup.php
