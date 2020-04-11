@@ -164,5 +164,11 @@ Swoole-4.2.2 版本以上允许脚本(未创建HttpServer)在当前协程中 exi
 ```
 
 
+### Swoole共享内存
+
+* table.php         --- Swoole共享内存
 
 
+### Swoole多进程
+
+* process.php       --- 创建子进程
