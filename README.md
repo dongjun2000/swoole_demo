@@ -172,3 +172,8 @@ Swoole-4.2.2 版本以上允许脚本(未创建HttpServer)在当前协程中 exi
 ### Swoole多进程
 
 * process.php       --- 创建子进程
+* write_read.php    --- 管道数据读写
+* push_pop.php      --- 消息队列通信
+* daemon.php        --- 守护进程化
+* signal.php        --- 信号监听
+* pool.php          --- 进程池
