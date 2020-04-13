@@ -177,3 +177,38 @@ Swoole-4.2.2 版本以上允许脚本(未创建HttpServer)在当前协程中 exi
 * daemon.php        --- 守护进程化
 * signal.php        --- 信号监听
 * pool.php          --- 进程池
+
+### Swoole 客户端
+
+* client.php        --- 同步阻塞与异步非阻塞
+
+### 长连接与并行
+
+建立 TCP 长连接
+
+```
+$client = new Swoole\Client(SWOOLE_SOCK_TCP | SWOOLE_KEEP);
+
+启用 SWOOLE_KEEP 选项后，一个请求结束不会关闭 socket，下一次再进行 connect 时会自动复用上次创建的连接。
+如果连接已经关闭，那么 connect 会创建新的连接。
+
+TCP 长连接可以减少 connect、close 带来的额外 IO 消耗，降低服务端 connect、close 次数。
+```
+
+Client 并行处理
+
+```
+Swoole\Client 的并行处理中用了 select 来做 IO 事件循环。
+
+int swoole_client_select(array &$read, array &$write, array &$error, float $timeout);
+
+$read, $write, $error 分别是可读、可写、错误的文件描述符；是数组变量的引用，元素必须是 Swoole\Client 对象。
+此方法基于 select 系统调用，最大支持 1024 个 socket。
+
+$timeout 是 select 系统调用的超时时间，单位秒。
+```
+
+
+
+
+
